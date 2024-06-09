@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/JS.JS">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIM Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .home {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .content {
+            perspective: 340px;
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+        }
+
+
+        @keyframes fly {
+            from {
+                transform: translateZ(0px);
+                opacity: .6;
+            }
+
+            to {
+                transform: translateZ(200px);
+                opacity: .8;
+            }
+        }
+
+        .title {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            left: 250px;
+            right: 0;
+            top: 300px;
+            margin: auto;
+            bottom: 0;
+
+            font-size: 45px;
+            /*设置字体大小*/
+            color: white;
+            font-weight: 500;
+            /*设置字体粗细*/
+            text-shadow: 1px 0px #009699, 1px 2px #006466, 3px 1px #008599,
+                2px 3px #005a66, 4px 2px #008299, 4px 4px #005566,
+                5px 3px #006b99, 5px 5px #004b66, 7px 4px #008299,
+                6px 6px #003a66, 8px 5px #007599, 7px 7px #002c66,
+                9px 6px #004599, 9px 8px #005e66, 11px 7px #0e5259
+                /*设置文字阴影*/
+        }
+
+        .titles {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            left: 250px;
+            right: 0;
+            top: 350px;
+            margin: auto;
+            bottom: 0;
+            color: white;
+            font-size: 40px;
+            /*设置字体大小*/
+            font-weight: 500;
+            /*设置字体粗细*/
+            text-shadow: 1px 0px #009699, 1px 2px #006466, 3px 1px #008599,
+                2px 3px #005a66, 4px 2px #008299, 4px 4px #005566,
+                5px 3px #006b99, 5px 5px #004b66, 7px 4px #008299,
+                6px 6px #003a66, 8px 5px #007599, 7px 7px #002c66,
+                9px 6px #004599, 9px 8px #005e66, 11px 7px #0e5259
+                /*设置文字阴影*/
+        }
+
+        .icon {
+            width: 15px;
+            height: 15px;
+            padding: 5px;
+            border: 2px solid #fff;
+            border-radius: 100%;
+            position: absolute;
+            bottom: 50px;
+            animation: downs 2s linear infinite;
+        }
+
+        @keyframes downs {
+            from {
+                transform: translatey(0px);
+                opacity: .6;
+            }
+
+            to {
+                transform: translatey(30px);
+                opacity: .8;
+            }
+        }
+
+        .ribbon {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            right: 500px;
+            top: 50px;
+            margin: auto;
+        }
+
+
+
+
+        .ribbon a:link,
+        .ribbon a:visited {
+            color: #f3f3f4;
+            text-decoration: none;
+            height: 3.5em;
+            overflow: hidden;
+        }
+
+        .ribbon span {
+            background: #092635;
+            display: inline-block;
+            line-height: 3em;
+            padding: 0 1.5em;
+            margin-top: 0.5em;
+            position: relative;
+            -webkit-transition: background-color 0.2s, margin-top 0.2s;
+            /* Saf3.2+, Chrome */
+            -moz-transition: background-color 0.2s, margin-top 0.2s;
+            /* FF4+ */
+            -ms-transition: background-color 0.2s, margin-top 0.2s;
+            /* IE10 */
+            -o-transition: background-color 0.2s, margin-top 0.2s;
+            /* Opera 10.5+ */
+            transition: background-color 0.2s, margin-top 0.2s;
+        }
+
+        .ribbon a:hover span {
+            background: #0591b4;
+            margin-top: 0;
+        }
+
+
+
+        .introduce {
+            display: flex;
+            flex-direction: column;
+            margin-top: -120px;
+        }
+
+        .introduce_item {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .introduce_item_img {
+            width: 500px;
+            height: 500px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+        }
+
+        .introduce_item_img1 {
+            width: 280px;
+            height: 260px;
+            border-radius: 10px;
+            align-items: center;
+            display: block;
+            margin: auto;
+        }
+
+        .introduce_item_img2 {
+            width: 240px;
+            height: 320px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img3 {
+            width: 220px;
+            height: 300px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img4 {
+            width: 240px;
+            height: 240px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img5 {
+            width: 320px;
+            height: 240px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img6 {
+            width: 240px;
+            height: 220px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img7 {
+            width: 220px;
+            height: 320px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img8 {
+            width: 250px;
+            height: 260px;
+            align-self: center;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img9 {
+            width: 360px;
+            height: 340px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_img10 {
+            width: 380px;
+            height: 360px;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+
+        }
+
+        .introduce_item_title {
+            color: rgb(5, 16, 39);
+            width: 400px;
+            font-size: 20px;
+            line-height: 34px;
+            align-self: center;
+            padding-left: 50px;
+            padding-right: 50px;
+            text-align: left;
+        }
+
+        .introduce_item_titles {
+            width: 400px;
+            font-size: 20px;
+            line-height: 34px;
+            align-self: center;
+            padding-left: 50px;
+            padding-right: 50px;
+            text-align: left;
+        }
+
+        .introduce_item_titles1 {
+            width: 500px;
+            font-size: 20px;
+            line-height: 36px;
+            align-self: center;
+            padding-left: 15px;
+            text-align: left;
+        }
+
+        audio {
+            position: fixed;
+            bottom: 50px;
+            right: 0;
+        }
+
+
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 400px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .icons_items {
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            margin-top: 80px;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 200px;
+            height: 220px;
+
+        }
+
+        .icons_items_imgs {
+            border-radius: 10%;
+            width: 260px;
+            height: 120px;
+            margin-bottom: 30px;
+        }
+
+        select {
+            background-color: transparent;
+            cursor: pointer;
+            min-width: 50px;
+            height: 40px;
+            color: #1f262a;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            outline: none;
+            border-radius: 8px;
+            z-index: 0;
+            background: #ffffff;
+            overflow: hidden;
+            border: 2px solid #223948;
+            color: #177cc9;
+
+
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin-left: 250px;
+            padding: 0;
+            font-family: Arial, sans-serif;
+
+        }
+
+
+
+        /* 侧边导航栏样式 */
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #3a4952;
+            padding-top: 20px;
+        }
+
+        /* 导航链接样式 */
+        .sidenav a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #739fa8;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* 鼠标悬停时导航链接颜色变化 */
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        /* 主内容区域 */
+        .main {
+            margin: 0;
+            padding: 0px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid rgb(255, 255, 255);
+        }
+
+        /* 隐藏表格 */
+        .hidden {
+            display: none;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ffffff;
+        }
+
+        th {
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 侧边导航栏 -->
+
+
+    <div class="sidenav">
+        <a href='#Introduce'><span>介绍</span></a>
+        <a href='#Team'><span>成员</span></a>
+        <a href='#Projects'><span>团队</span></a>
+        <a href='#publications'><span>论文/基金</span></a>
+        <a href='#Cooperators'><span>合作方</span></a>
+        <a href='#Contact'><span>联系我们&公开招募</span></a>
+    </div>
+
+    <!-- 主内容区域 -->
+
+    <div class="main">
+        <img class="bgc" src="images/人工智能2.jpg" width="100%" alt="">
+
+        <h2 class="title">Welcome to AIM Lab</h2>
+        <h3 class="titles">Dream big & Aim high</h3>
+    </div>
+    <div id="Introduce">
+        <table>
+            <tr>
+                <td><img class="introduce_item_img" src="images/共同协同.png" alt=""></td>
+                <td class="introduce_item_title">
+                    AIM实验室是湖南第一师范学院计算机学院汪政博士领导，他同时隶属于暨南大学深圳人民医院皮肤科（生物医学信息学研究部）。该项目聚焦于图像科学和生物医学信息学的交叉领域的前沿研究，开发和应用人工智能方法处理大量医学数据，用于生物医学发现、精准医学和精准健康（早期疾病检测和未来疾病预测）。
+                </td>
+            </tr>
+            <tr>
+
+                <td class="introduce_item_title">
+                    该项目在文本和图像分析以及人工智能方面开发新方法，包括多模态和多任务学习、弱监督、知识表示、自然语言处理和决策理论，以解决利用医学大数据的挑战。我们的工作涉及多学科合作，与长沙的顶级科学家以及国际其他机构进行合作。
+                </td>
+                <td><img class="introduce_item_img" src="images/合作.png" alt=""></td>
+            </tr>
+            <tr>
+                <td><img class="introduce_item_img" src="images/发散创意.png" alt=""></td>
+                <td class="introduce_item_title">
+                    AIM实验室提供一个独特的多学科环境，进行创新的基于人工智能的医疗保健研究，具有丰富的学术出版和成就记录。该项目的核心研究主题包括：<br>（1）使用无监督的方法对相关放射学报告进行处理，利用词嵌入和相关方法进行自动图像注释；<br>（2）开发分析纵向电子病历数据以预测临床结果和最佳治疗方法的方法；
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td class="introduce_item_title">
+                    （3）创建多模态深度学习模型，整合多维电子病历和其他数据，发现疾病的电子表型；<br>（4）开发具有嘈杂或稀疏标签（弱监督）的人工智能模型，以及跨模态、多任务学习和观察性人工智能方法；<br>（5）为培训深度学习模型的分布式计算开发和实施算法，利用多机构数据，同时避免数据共享的障碍。
+                </td>
+                <td><img class="introduce_item_img" src="images/进行中.png" alt=""></td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <!-- 成员 -->
+    </div>
+    <hr style="border-top: 3px solid rgb(0, 0, 0);">
+    <div id="Team">
+
+        <table>
+            <tr>
+                <td>
+                    <img class="introduce_item_img1" src="images/汪政.png" alt="">
+                </td>
+                <td class="introduce_item_title">
+                    <h4>汪政</h4>
+                    <h4>首席研究员</h4>
+                    <p>
+                        主要研究领域为传统数据的机器学习、深度学习解偏微分方程、医学影像计算、多尺度医学数据分析、自然语言处理和图神经网络，主持参与项目5项，公开发表学术论文25篇，论文总影响因子是130.9，总引用是197。
+                    </p>
+                </td>
+            </tr>
+            <tr>
+
+                <td class="introduce_item_title">
+                    <h4>林开彬</h4>
+                    <h4>高级研究员</h4>
+                    <p>
+                        目前主要从事次模优化、图形图像处理等方向的研究工作,参与国家自然科学基金面上项目2项，公开发表学术论文4篇。
+                    </p>
+                </td>
+                <td><img class="introduce_item_img2" src="images/林开彬.jpg" alt=""></td>
+            </tr>
+        </table>
+        <hr style="border-top: 2px solid rgb(48, 103, 142);">
+        <table class="table1">
+            <tr>
+                <td><img class="introduce_item_img3" src="images/原宇杰照片.jpg" alt=""></td>
+                <td class="introduce_item_title">
+                    <h3>原宇杰</h3>
+                    <h4>前研究助理</h4>
+                    <p>
+                        参与课题项目：Differentiation of phase vitiligo disease through an explainable machine
+                        learning (ExpML2Vit).
+                    </p>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td class="introduce_item_title">
+                    <h3>薛杨</h3>
+                    <h4>研究助理
+                    </h4>
+                    <p>参与课题项目：Differentiation of phase vitiligo disease through an explainable machine learning
+                        (ExpML2Vit)；<br>
+                        Smartphone as a new tool to accurately assess the treatment of vitiligo；<br>
+                        Radiomic analysis of magnetic resonance images measure hydrops and outcome in
+                        MD（RadA2MD）.</br>
+                    </p>
+                </td>
+                <td><img class="introduce_item_img4" src="images/薛杨照片.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td><img class="introduce_item_img5" src="images/刘姿柔照片.jpg" alt=""></td>
+                <td class="introduce_item_title">
+
+                    <h3>刘姿柔</h3>
+                    <h4>研究助理</h4>
+                    <p>参与课题项目：跨模态检索和基于实训医疗效果的疗效预测(基金)[智能皮肤影像中心网页]、AIM网页设计、文章撰写。
+                    </p>
+                </td>
+
+            </tr>
+            <!-- 添加更多行 -->
+        </table>
+        <br>
+        <hr style="border-top: 2px solid rgb(48, 103, 142);">
+        <table class="table1">
+
+            <tr>
+
+                <td class="introduce_item_title">
+                    <h3>胡慧</h3>
+                    <h4>研究助理</h4>
+                    <p>参与课题项目：Automated Vitiligo Repigmentation Evaluation System with Wood's Lamp.
+                    </p>
+                </td>
+                <td><img class="introduce_item_img6" src="images/胡慧照片.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td><img class="introduce_item_img3" src="images/谭心宇照片.jpg" alt=""></td>
+                <td class="introduce_item_title">
+
+                    <h3>谭心宇</h3>
+                    <h4>研究助理</h4>
+                    <p>参与课题项目：Smart Diabetic Foot Ulcer Scoring System: a prospective validation；<br>
+                        Radiomic analysis of magnetic resonance images measure hydrops and outcome in
+                        MD；<br>跨模态检索和基于实训医疗效果的疗效预测(基金)[智能皮肤影像中心网页]。</br> </p>
+                    </p>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="introduce_item_title">
+                    <h3>袁浩</h3>
+                    <h4>研究助理</h4>
+                    <p> 参与课题项目：AI-based system for HER extraction and analysis；<br>pdh - 2022 - Automatic Assessment
+                        of Textual
+                        Exercises；<br>Designing clinically translatable artificial intelligence systems for treament
+                        of
+                        bile
+                        duct stone using EHR.</br>
+                    </p>
+                </td>
+                <td><img class="introduce_item_img3" src="images/袁浩照片.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td><img class="introduce_item_img7" src="images/石彤照片.jpg" alt=""></td>
+                <td class="introduce_item_title">
+
+                    <h3>石彤</h3>
+                    <h4>研究助理</h4>
+                    <p>参与课题项目：Smartphone app for precise surgical advice for large caliber stones on
+                        MRCP；</br>AIM在手机端的应用开发的辅助技术研究。
+                    </p>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td class="introduce_item_title">
+                    <h3>吴怡</h3>
+                    <h4>研究助理</h4>
+                    <p>参与课题项目：Bioinformatics and Mendelian randomization.
+                    </p>
+                </td>
+                <td><img class="introduce_item_img8" src="images/吴怡照片.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td><img class="introduce_item_img8" src="images/席浩楠照片.jpg" alt=""></td>
+                <td class="introduce_item_title">
+                    <h3>席昊楠</h3>
+
+                    <h4>研究助理</h4>
+                    <p>参与课题项目：Topographic sparse solutions for Grading System of male hair loss；<br>Smartphone app
+                        for precise
+                        surgical advice for large caliber stones on MRCP；<br>AIM在手机端的应用开发的技术研究。</br>
+                    </p>
+                </td>
+
+            </tr>
+
+            <td class="introduce_item_title">
+                <h3>聂梓轩</h3>
+                <h4>研究助理</h4>
+                <p>参与课题项目：Automated assessment of vitiligo treatment response using deep learning and wood's lamp images
+                </p>
+            </td>
+            <td><img class="introduce_item_img8" src="images/聂梓轩.jpg" alt=""></td>
+            </tr>
+            <!-- 添加更多行 -->
+        </table>
+    </div>
+    <hr style="border-top: 3px solid rgb(0, 0, 0);">
+    <!-- 项目组 -->
+    <div id="Projects">
+        <table class="table1">
+
+            <tr>
+
+                <td class="introduce_item_title">
+                    <h4>XAI-modeled data science; Apps in healthy</h4>
+                    <h5>课题组组长：薛杨 </h5>
+                    <h5>组员：席昊楠、石彤</h5>
+                    <h5>课题组介绍:</h5>
+                    XAI（可解释的人工智能）建模数据科学是医疗保健领域的一种变革性方法。 它将可解释的人工智能技术集成到数据分析中，使医疗保健专业人员能够了解人工智能模型如何得出结论，确保透明度和信任。
+                    这项创新为医疗保健应用程序提供动力，为个人健康、药物依从性和生活方式选择提供可行的见解。 通过使人工智能驱动的建议易于理解和访问，XAI
+                    建模的数据科学使个人能够做出明智的决策，从而促进更好的健康结果。
+                </td>
+                <td><img class="introduce_item_img10" src="images/薛杨.png" alt=""></td>
+            </tr>
+            <tr>
+                <td><img class="introduce_item_img9" src="images/胡慧3.jpg" alt=""></td>
+                <td class="introduce_item_title">
+                    <h4>Quantitative biomarks and functional events</h4>
+                    <h5>课题组组长：胡慧</h5>
+                    <h5>组员：汪指衡</h5>
+                    定量生物标志物是体内可测量的指标，例如血糖水平，可以提供客观的健康数据。
+                    功能事件包括心率或免疫反应等动态过程。它们共同提供了对健康的全面理解。定量生物标志物有助于疾病诊断和监测，而功能事件则有助于了解生理过程。
+                    这些工具促进循证决策、个性化医疗和研究，有助于改善医疗保健结果和我们对人类生物学的理解。
+                </td>
+
+            </tr>
+            <tr>
+                <td class="introduce_item_title">
+                    <h4>AI-based theranostics and multimodal fusion</h4>
+                    <h5>课题组组长：谭心宇</h5>
+                    基于人工智能的治疗诊断和多模式融合是医疗保健领域的突破性方法。 将人工智能 (AI) 与医学成像、基因组学和临床记录等多种数据源相结合，以实现个性化患者护理。
+                    人工智能识别疾病生物标志物并预测进展，优化治疗计划。
+                    多模态融合整合数据，提供全面的健康视图。 好处包括早期疾病检测、个性化治疗和节省成本。 挑战包括数据隐私和模型可解释性。 这些技术有望改变医疗保健，提高诊断和治疗的准确性和效率</br>
+                </td>
+                <td><img class="introduce_item_img9" src="images/谭心宇.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td><img class="introduce_item_img9" src="images/胡慧1.jpg" alt=""></td>
+                <td class="introduce_item_title">
+                    <h4>Advanced NLP and meta analysis</h4>
+                    <h5>课题组组长：袁浩</h5>
+                    高级自然语言处理（NLP）和推荐系统正在重塑各行业的用户体验。高级 NLP 采用复杂的算法来理解和处理人类语言，而推荐系统则分析用户行为以建议个性化内容或产品。
+                    它们共同提供高度定制的建议，增强参与度和决策制定。 高级 NLP 还有助于内容理解和上下文感知建议，使用户体验更加相关和高效，从而提高电子商务和内容流等领域的满意度和业务成功。
+                </td>
+
+            </tr>
+
+            <tr>
+                <td class="introduce_item_title">
+                    <h4>Bioinformatics and Mendelian randomization</h4>
+                    <h5>课题组组长：吴怡</h5>
+                    生物信息学是生物学和数据科学的交叉领域，利用计算工具来分析大量的生物数据集。 孟德尔随机化是一种统计技术，利用遗传变异作为代理来评估观察研究中暴露与结果之间的因果关系。
+                    在医疗保健领域，生物信息学和孟德尔随机化有助于识别导致疾病的遗传因素，从而实现更精确的诊断和治疗策略。 这些方法提供了对复杂生物过程的见解，增进了我们对遗传学和疾病机制的理解。</br>
+
+                </td>
+                <td><img class="introduce_item_img9" src="images/吴怡.png" alt=""></td>
+            </tr>
+            <!-- 添加更多行 -->
+        </table>
+    </div>
+    <hr style="border-top: 3px solid rgb(0, 0, 0);">
+    <!-- 论文 -->
+    <h4 id="publications">论文</h4>
+
+    <select id="dropdown" style="width: 300px; height: 50px;">
+        <tr>>
+            <option value="table1">
+                2023
+            </option>
+            <option value="table2">2022</option>
+            <option value="table3">2021</option>
+            <option value="table4">2020</option>
+            <option value="table5">2019</option>
+            <option value="table6">2018</option>
+            <option value="table7">2017</option>
+            <option value="table9">2015</option>
+            <option value="table10">2014</option>
+    </select>
+    <h4>基金</h4>
+    <select id="dropdown" style="width: 300px; height: 50px;">
+        <tr>>
+            <option value="table21">
+                2023
+            </option>
+    </select>
+
+    <!-- 创建表格1 -->
+    <table id="table1" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td> ‘Structure-Constrained Deep
+                Feature Fusion for Chronic Otitis Media and Cholesteatoma Identification’. MULTIMEDIA TOOLS AND
+                APPLICATIONS (2023). DOI: 10.1007/s11042-023-15425-7/</td>
+            <td>Cong Cao, Jian Song, Ri Su, Xuewen Wu, Zheng Wang* and Muzhou Hou*.</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘A decoupled generative
+                adversarial network for automatic detection and tear quantification of anterior cruciate
+                ligament’.
+                Neural
+                Computing and Applications (2023). DOI: 10.1007/s00521-023-08776-7</td>
+            <td>Jiaoju Wang, Jiewen Luo, Alphonse Houssou Hounye, Zheng Wang, Jiehui Liang,
+                Yangbo Cao, Jing Feng,
+                Lingjie Tan, Zhengcheng Wang, Menglin Kong, Muzhou Hou* and Jinshen He*.</td>
+            <td>Papers</td>
+        </tr>
+
+        <tr>
+
+            <td>“Artificial intelligence-based detection and assessment of ascites on CT scans.” EXPERT SYSTEMS
+                WITH
+                APPLICATIONS (2023): 119979. DOI: 10.1016/j.eswa.2023.119979.
+            </td>
+            <td>Zheng Wang, Ying Xiao, Li Peng, Zhuolin Zhang, Xiaojun Li, Yang Xue, Jie
+                Zhang* and Jianglin Zhang*.</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>"A novel
+                Cuprotosis-related signature predicts the prognosis and selects personal treatments for melanoma
+                based on
+                bioinformatics analysis." Frontiers in Oncology 13 (2023). DOI: 10.3389/fonc.2023.1108128.
+            </td>
+            <td>4Hu, Bingqian, Alphonse Houssou Hounye, Zheng Wang*, Min Qi*, and Jianglin
+                Zhang*.</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>"Development and validation of ferroptosis-related lncRNA signature and immune-related gene
+                signature
+                for predicting the prognosis of cutaneous melanoma patients." Apoptosis (2023): 1-20. DOI:
+                10.1007/s10495-023-01831-7.
+            </td>
+            <td>Xiong, Kaifen, Zheng Wang, Alphonse Houssou Hounye, Li Peng, Jianglin Zhang*,
+                and Min Qi*.</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>"A novel automatic acne detection and severity
+                quantification
+                scheme using deep learning." Biomedical Signal Processing and Control 84 (2023): 104803. DOI:
+                10.1016/j.bspc.2023.104803.
+            </td>
+            <td>Wang, Jiaoju, Chong Wang, Zheng Wang, Alphonse Houssou Hounye, Zhaoying Li,
+                MengLin Kong,
+                Muzhou Hou*, Jianglin Zhang*, and Min Qi*.</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘A Novel
+                Pyroptosis-Related LncRNA Signature Predicts Prognosis and Indicates Tumor Immune
+                Microenvironment
+            </td>
+            <td>Jia’nan Zhong, Zheng Wang*, Alphonse Houssou Hounye, Jing Liu, Jianglin
+                Zhang*, Min Qi* .</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+
+    <!-- 创建表格2 -->
+    <table id="table2" class="hidden" border="1">
+        <tr>
+
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td>‘A
+                Comprehensive Review of
+                Methods based on Deep Learning for Diabetes-Related Foot Ulcers’. FRONTIERS IN ENDOCRINOLOGY.
+                DOI: 10.3389/fendo.2022.945020.</td>
+            <td>Zhang Jianglin, Yue Qiu, Li Peng, Zheng Wang*, Min Qi*, Zhou Qiuhong.</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>’Structure￾aware deep
+                learning
+                for chronic middle ear disease’. EXPERT SYSTEMS WITH APPLICATIONS 194
+                (2022): 116519. DOI: 10.1016/j.eswa.2022.116519.</td>
+            <td>Zheng Wang,Jian Song, Ri Su, Muzhou Hou*, Min Qi, Jianglin Zhang*, Xuewen Wu.
+                (2022).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘Three
+                feature
+                streams based on a convolutional neural network for early esophageal cancer identification’.
+                MULTIMEDIA TOOLS AND APPLICATIONS. DOI: 10.1007/s11042-022-13135-0.
+            </td>
+            <td>Zheng Wang, Zhaoying Li, Ying Xiao, Xiaowei Liu, Muzhou Hou*, Shuijiao.
+                Chen*. (2022).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘A cell phone app for facial acne severity assessment’. Applied Intelligence. DOI:
+                https://doi.org/10.1007/s10489-022-03774-z.
+            </td>
+            <td>Jiaoju Wang, Yan Luo, Zheng Wang, Alphonse Houssou Hounye, Cong Cao and
+                Muzhou Hou*, Jianglin
+                Zhang.(2022).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘Comprehensive Analysis of the Expression and Prognosis for GPXs in Melanoma ‘. Biomedical
+                Signal Processing and Control. DOI: 10.1016/j.bspc.2022.103804.
+            </td>
+            <td>Alphonse Houssou Hounye, Wan Miao, Zheng Wang, Min Qi, Jianglin Zhang*,
+                Muzhou Hou*.
+                (2022).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td> "Seed extraction using
+                superpixel-based SLIC for interactive image segmentation," Journal of
+                Electronic Imaging 31(1), 013018 (31 January 2022).(SCI Index)
+            </td>
+            <td>Kaibin Lin,Kaibin Lin, Qiaoliang Li*
+                , and Guoqun Wang.</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+    <!-- 创建表格3 -->
+    <table id="table3" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td>‘R-JaunLab: AutomaticMulti-Class Recognition of Jaundice on Photos of Subjects
+                with Region Annotation Networks’. Journal of Digital Imaging. DOI:
+                10.1007/s10278-021-00432-7,2021.
+            </td>
+            <td>Zheng Wang, Ying Xiao, Futian Weng, Xiaojun Li, Danhua Zhu, Ffanggen
+                Lu,Xiaowei Liu, Muzhou Hou*
+                and Yu Meng*. (2021).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td> ‘Numerical
+                solution
+                for high-dimensional partial differential equations based on deep learning with residual
+                learning
+                and data￾driven
+                learning’. International Journal of Machine Learning and Cybernetics. DOI:10.1007/s13042-021-
+                01277-w,2020.
+            </td>
+            <td>Zheng Wang, Futian Weng, Jialin Liu, Kai Cao , Muzhou Hou* and Juan
+                Wang.(2021).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘Attention Graph Convolutional Nets for Esophageal Contraction Pattern Recognition in
+                High-Resolution
+                Manometries’. Biomedical Signal Processing and Control. DOI: 10.1016/j.bspc.2021.102734, 2021.
+            </td>
+            <td>Zheng Wang, Lu Yan, Yuzhuo Dai, Fanggen Lu, Jie Zhang, Muzhou Hou*, Xiaowei
+                Liu*. (2021).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘Deep learning for
+                tracing esophageal motility function over time’. Computer Methods and Programs in Biomedicine
+                207
+                (2021): 106212.DOI: 10.1016/j.cmpb.2021.106212.
+            </td>
+            <td>Zheng Wang, Muzhou Hou, Lu Yan, Yuzhuo Dai, Yani Yin*, Xiaowei Liu*.
+                (2021).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>’Adaptive
+                multilayer neural network for solving elliptic partial differential equations with different
+                boundary
+                conditions’. Digital Signal Processing. DOI: 10.1016/j.dsp.2021.103223.
+            </td>
+            <td>Zheng Wang, Alphonse Houssou Hounye, Jiaoju Wang, Cong Cao, Muzhou Hou*.
+                (2021).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>’Deep
+                learning
+                for abdominal adipose tissue segmentation with few labelled samples’. International Journal of
+                Computer
+                Assisted Radiology and Surgery. DOI: 10.1007/s11548-021-02533-8.
+            </td>
+            <td>Zheng Wang, Alphonse Houssou Hounye, Jianglin Zhang, Muzhou Hou*, Min Qi*.
+                (2021).</td>
+            <td>Papers</td>
+        </tr>
+        <td>’Identification and Validation of Three Autophagy-Related Long Noncoding RNAs as Prognostic
+            Signature in Cholangiocarcinoma’. FRONTIERS IN ONCOLOGY. DOI: 10.3389/fonc.2021.780601.
+        </td>
+        <td>21. Yajun Liu, Alphonse Houssou Hounye, Zheng Wang, Xiaowei Liu, Jun Yi* and
+            Min Qi*.
+            (2021).</td>
+        <td>Papers</td>
+        </tr>
+        </tr>
+        <td>"Integration of the saliency-based
+            seeds generation and random walks with restart for image
+            segmentation," Journal of Electronic Imaging 30(4), 043016 (13 August
+            2021). (SCI Index)
+        </td>
+        <td>’Kaibin Lin and Qiaoliang Li*</td>
+        <td>Papers</td>
+        </tr>
+
+    </table>
+
+    <!-- 创建表格4 -->
+    <table id="table4" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td> ‘Automatically discriminating and localizing COVID-19 from community-acquired pneumonia on
+                chest
+                X-rays’. Pattern
+                Recognition 110 (2021): 107613. DOI: 10.1016/j.patcog.2020.107613.
+            </td>
+            <td>Zheng Wang, Yin Xiao, Yong Li, Jie Zhang, Fanggen Lu, Muzhou Hou*, Xiaowei
+                Liu*. (2020).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘An Effective CNN Method for Fully Automated Segmenting Subcutaneous and Visceral
+                Adipose Tissue on CT Scans’.Annals of Biomedical Engineering. 48,pp 312-328,2020.
+            </td>
+            <td>Zheng Wang, Yu Meng, Futian Weng, Yinhao Chen, Fanggen Lu, Xiaowei Liu,
+                Muzhou Hou* and Jie
+                Zhang*. (2020).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td> ‘Automatically discriminating and localizing COVID-19 from community-acquired pneumonia on
+                chest
+                X-rays’. Pattern
+                Recognition 110 (2021): 107613. DOI: 10.1016/j.patcog.2020.107613.
+            </td>
+            <td>Zheng Wang, Yin Xiao, Yong Li, Jie Zhang, Fanggen Lu, Muzhou Hou*, Xiaowei
+                Liu*. (2020).</td>
+            <td>Papers</td>
+        </tr>
+        <tr>
+
+            <td>‘Gold price forecasting research
+                based on an improved
+                online extreme learning machine algorithm’. Journal of Ambient Intelligence and Humanized
+                Computing.
+                2020(6).
+            </td>
+            <td>Weng F#, Chen Y, Wang Z, Hou M*, Zhang T.</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+    <!-- 创建表格5 -->
+    <table id="table5" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td>‘A Novel Robust Method for
+                Solving CMB Receptor
+                Model Based on Enhanced Sampling Monte Carlo Simulation’. Processes, 2019, 169(3).
+            </td>
+            <td>Hou W#, Yang Y, Wang Z, Hou M*, Wu Q, & Xie X*.</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+    <!-- 创建表格6 -->
+    <table id="table6" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td>‘Application
+                of Regularized
+                Extreme Learning Machine Based on BIC Criterion and Genetic Algorithm in Iron Ore Price
+                Forecasting’.
+                2018 3rd International Conference on Modelling, Simulation and Applied Mathematics (MSAM 2018).
+                2018.
+            </td>
+            <td>Weng F#, Hou M , Zhang T , Yang, Y，Wang Z，Sun H，Zhu H*，Luo J*.</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+
+    <!-- 创建表格7 -->
+    <table id="table7" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td>COMPUTERS & GRAPHICS-UK, 000(2017)1–12,2017. JCR-Q1, Impact factor: 1.351.
+            </td>
+            <td>Ling Hu#, Qinsong Li, Shengjun Liu*, Xinru Liu, Zheng Wang*. ‘Wavelet-based
+                polygon soup
+                consolidation’</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+    <!-- 创建表格9 -->
+    <table id="table9" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td>"An algorithm for recognition of un-answered
+                question in paperless marking based on segment gray histogram," 2015
+                10th International Conference on Computer Science & Education (ICCSE),
+                2015, pp. 685-690. (EI Index)
+            </td>
+            <td>Lu Ping,Lin Kai Bin</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+    <!-- 创建表格10 -->
+    <table id="table10" class="hidden" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+
+            <td>并行算法在无纸化阅卷中空白题识别的应用, 贵州师范大学学报(自然科学版), 2014, 32(6): 105-110.
+            </td>
+            <td>刘志杰*林开彬</td>
+            <td>Papers</td>
+        </tr>
+    </table>
+    <hr style="border-top: 3px solid rgb(0, 0, 0);">
+    <!-- 合作伙伴 -->
+    <div class="container" id="Cooperators">
+
+        <div class="contact-info">
+            <section id="partners">
+                <h2>合作伙伴</h2><br>
+                <a href="https://www.szhospital.com/" target="_blank">
+                    <img src="images/6.png" width="200px" height="70px" /> </a>
+                <a href="http://www.hnsrmyy.com/index.php?catid=109" target="_blank">
+                    <img src="images/7.png" width="220px" height="80px" /> </a>
+                <a href="https://www.xiangya.com.cn/list/5796.html" target="_blank">
+                    <img src="images/8.png" width="220px" height="80px" /> </a>
+                <a href="https://www.xyeyy.com/5/38/83/index.htm" target="_blank">
+                    <img src="images/91.png" width="210px" height="80px" /> </a>
+                <a href="https://www.xy3yy.com/ksjj/15363.html" target="_blank">
+                    <img src="images/10.png" width="210px" height="75px" /> </a>
+
+            </section>
+        </div>
+        <!--   <div class="contact-info">
+            <section id="partners">
+                <h2>Cooperate Conference/Jurnal</h2><br>
+
+            </section>
+        </div>
+    </div>
+    <hr style="border-top: 3px solid rgb(0, 0, 0);"> -->
+        <!-- 联系我们 -->
+
+        <div class="container" id="Contact">
+            <h1>C联系我们</h1>
+            <div class="contact-form">
+                <h2>可联系人员：</h2>
+                <h3>刘姿柔</h3>
+                <h3>QQ:3332566276</h3>
+                <h4><a href="https://github.com/HFNG-AIM" target="_blank"><span>
+                            GitHub of HFNG-AIM
+                        </span></a></h4>
+            </div>
+            <div class="contact-info">
+                <section id="partners">
+                    <h2>职位空缺</h2><br>
+                    <h3>研究兴趣：</h3>
+                    <p> &nbsp;&nbsp;
+                        多模态融合，机器学习，深度学习，卷积神经网络，图神经网络，数据科学，可解释人工智能，生物信息学，知识图谱，因果关系，推荐系统，决策制定，自然语言处理。
+
+                    </p><br>
+
+                    <h3>研究助理职位:</h3>
+                    <p> 目前没有开放的HiWi（学生助手）职位。<br>
+                        2024年的研究助理职位将通过XXXXX项目填补。申请截止日期为2023年11月15日。<br>仅接受面试，不接受电子邮件申请。欢迎高素质的学生提交简历。如果您的简历令人印象深刻，我们将尽快与您联系。
+            </div>
+        </div>
+
+        <script>
+            // 获取下拉框和表格的引用
+            var dropdown = document.getElementById("dropdown");
+            var table1 = document.getElementById("table1");
+            var table2 = document.getElementById("table2");
+            var table3 = document.getElementById("table3");
+            var table4 = document.getElementById("table4");
+            var table5 = document.getElementById("table5");
+            var table6 = document.getElementById("table6");
+            var table7 = document.getElementById("table7");
+            var table9 = document.getElementById("table9");
+            var table10 = document.getElementById("table10");
+            // 添加事件监听器，当下拉框的值改变时执行
+            dropdown.addEventListener("change", function () {
+                // 隐藏所有表格
+                table1.classList.add("hidden");
+                table2.classList.add("hidden");
+                table3.classList.add("hidden");
+                table4.classList.add("hidden");
+                table5.classList.add("hidden");
+                table6.classList.add("hidden");
+                table7.classList.add("hidden");
+                table9.classList.add("hidden");
+                table10.classList.add("hidden");
+
+
+                // 根据选择的值显示相应的表格
+                var selectedTableId = dropdown.value;
+                var selectedTable = document.getElementById(selectedTableId);
+                if (selectedTable) {
+                    selectedTable.classList.remove("hidden");
+                }
+            });
+        </script>
+</body>
+
+</html>
